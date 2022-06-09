@@ -1,23 +1,31 @@
-#include "ListItem.h"
+#include <map>
 #include <string>
-#include <list>
+#include <iostream>
+#include <map>
+#include <string>
 #include <iostream>
 ​
 using namespace std;
 ​
 int main () {
-    // TODO: Declare a list called shoppingList of type ListItem
-    string item;
-    string itemList="";
+    map<string, double> studentGrades;
     ​
-    // TODO: Read inputs (items) and add them to the shoppingList list
-    //       Read inputs until a -1 is input
-    while(getline(cin,item)){
-        if (item == "-1") itemList.pop_back();
-        else itemList += item + "\n";
-    }
-    ListItem shoppingList(itemList);
-    // TODO: Print the shoppingList list using the PrintNodeData() function
-    shoppingList.PrintNodeData();
+    // Students' grades (pre-entered)
+    studentGrades.emplace("Harry Rawlins", 84.3);
+    studentGrades.emplace("Stephanie Kong", 91.0);
+    studentGrades.emplace("Shailen Tennyson", 78.6);
+    studentGrades.emplace("Quincy Wraight", 65.4);
+    studentGrades.emplace("Janine Antinori", 98.2);
+    ​
+    // TODO: Read in new grade for a student, output initial
+    //       grade, replace with new grade in map,
+    //       output new grade
+    string studentName;
+    double studentGrade;
+    getline(cin, studentName);
+    cout<<studentName<<"'s "<<"original"<<" grade: "<<studentGrades.at(studentName)<<"\n";
+    cin>>studentGrade;
+    studentGrades[studentName] = studentGrade;
+    cout<<studentName<<"'s "<<"new"<<" grade: "<<studentGrades.at(studentName)<<"\n";
     return 0;
 }
