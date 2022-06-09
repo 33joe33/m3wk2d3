@@ -1,68 +1,30 @@
-#include <string>
 #include <iostream>
-#include <stdexcept>
-#include <fstream>
 using namespace std;
 ​
-string FindID(string name, ifstream &infoFS) {
-    string s;
-    /* Type your code here. */
-    while(infoFS>>s){
-        if (s == name){
-            infoFS>>s;
-            return s;
-        }
-    }
-    s = "Student ID not found for "+name;
-    throw runtime_error(s);
-}
-​
-string FindName(string ID, ifstream &infoFS) {
-    string s, t;
-    /* Type your code here. */
-    while(infoFS>>s>>t){
-        if (t == ID){
-            return s;
-        }
-    }
-    s = "Student name not found for "+ID;
-    throw runtime_error(s);
-}
-​
 int main() {
-    int userChoice;
-    string studentName;
-    string studentID;
+    cin.exceptions(ios::failbit); // Allow cin to throw exceptions
+    int val1, val2, val3, max, count = 0;
 
-    string studentInfoFileName;
-    ifstream studentInfoFS;
-
-    // Read the text file name from user
-    cin >> studentInfoFileName;
-
-    // Open the text file
-    studentInfoFS.open(studentInfoFileName);
-
-    // Read search option from user. 0: FindID(), 1: FindName()
-    cin >> userChoice;
-    ​
-    // FIXME: FindID() and FindName() may throw an Exception.
-    //        Insert a try/catch statement to catch the exception and output the exception message.
+    val1 = 0;
+    val2 = 0;
+    val3 = 0;
+    /* Type your code here. */
     try{
-        if (userChoice == 0) {
-            cin >> studentName;
-            studentID = FindID(studentName, studentInfoFS);
-            cout << studentID << endl;
-        }
-        else {
-            cin >> studentID;
-            studentName = FindName(studentID, studentInfoFS);
-            cout << studentName << endl;
-        }
+        cin>>val1;
+        max = val1;
+        count++;
+        cin>>val2;
+        max = (max < val2) ? val2 : max;
+        count++;
+        cin>>val3;
+        max = (max < val3) ? val3 : max;
+        count++;
+        cout<<max<<"\n";
     }
-    catch(runtime_error &e){
-        cout<<e.what()<<"\n";
+    catch(ios_base::failure &e){
+        cout<<count<<" input(s) read:\n";
+        if (count > 0) cout<<"Max is "<<max<<"\n";
+        else cout<<"No max\n";
     }
-    studentInfoFS.close();
     return 0;
 }
