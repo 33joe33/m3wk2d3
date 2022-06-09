@@ -1,21 +1,35 @@
 #include <iostream>
+#include "IntNode.h"
 using namespace std;
-string spaces = "         ";
-string stars = "*";
-/* TODO: Write recursive DrawTriangle() function here. */
-void DrawTriangle(int baseLength){
-    if (baseLength==-1) return;
-    cout<<spaces<<stars<<"\n";
-    spaces.pop_back();
-    stars.push_back('*');
-    stars.push_back('*');
-    DrawTriangle(baseLength - 2);
+​
+/* TODO: Write recursive PrintLinkedList() function here. */
+void PrintLinkedList(IntNode* Node){
+    if(Node){
+        Node->PrintData();
+        PrintLinkedList(Node->GetNext());
+    }
 }
 ​
 int main() {
-    int baseLength;
+    int size;
+    int value;
 
-    cin >> baseLength;
-    DrawTriangle(baseLength);
+    cin >> size;
+    cin >> value;
+    IntNode* headNode = new IntNode(value); // Make head node as the first node
+    IntNode* lastNode = headNode;      // Node to add after
+    IntNode* newNode = NULL;           // Node to create
+    ​
+    // Insert the second and the rest of the nodes
+    for (int n = 0; n < size - 1; ++n) {
+        cin >> value;
+        newNode = new IntNode(value);
+        lastNode->InsertAfter(newNode);
+        lastNode = newNode;
+    }
+    ​
+    // Call PrintLinkedList() with the head node
+    PrintLinkedList(headNode);
+
     return 0;
 }
