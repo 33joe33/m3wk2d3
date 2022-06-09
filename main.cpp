@@ -1,31 +1,38 @@
-#include <map>
-#include <string>
-#include <iostream>
-#include <map>
-#include <string>
+#include <queue>
 #include <iostream>
 ​
 using namespace std;
 ​
 int main () {
-    map<string, double> studentGrades;
+    string personName = "";
+    int counter = 0;
+    int youPosition;
     ​
-    // Students' grades (pre-entered)
-    studentGrades.emplace("Harry Rawlins", 84.3);
-    studentGrades.emplace("Stephanie Kong", 91.0);
-    studentGrades.emplace("Shailen Tennyson", 78.6);
-    studentGrades.emplace("Quincy Wraight", 65.4);
-    studentGrades.emplace("Janine Antinori", 98.2);
+    queue<string> peopleInQueue;
     ​
-    // TODO: Read in new grade for a student, output initial
-    //       grade, replace with new grade in map,
-    //       output new grade
-    string studentName;
-    double studentGrade;
-    getline(cin, studentName);
-    cout<<studentName<<"'s "<<"original"<<" grade: "<<studentGrades.at(studentName)<<"\n";
-    cin>>studentGrade;
-    studentGrades[studentName] = studentGrade;
-    cout<<studentName<<"'s "<<"new"<<" grade: "<<studentGrades.at(studentName)<<"\n";
+    getline(cin, personName);
+    while (personName != "-1") {
+        // TODO: Add personName to peopleInQueue
+        //       determine position of "You" (youPosition)
+        counter++;
+        peopleInQueue.push(personName);
+        if(personName == "You") youPosition = counter;
+        getline(cin, personName);
+    }
+    ​
+    cout << "Welcome to the ticketing service... " << endl;
+    cout << "You are number " << youPosition << " in the queue." << endl;
+    ​
+    // TODO: In a loop, remove head person from peopleInQueue,
+    //       output their name and that they have purchased a ticket,
+    //       then output your position in the queue. When you are at
+    //       the head, output that you can purchase your ticket.
+    for(; youPosition > 1; youPosition--){
+        cout<<peopleInQueue.front()<<" has purchased a ticket.\n";
+        peopleInQueue.pop();
+        cout<<"You are now number "<<youPosition - 1<<"\n";
+    }
+    cout<<"You can now purchase your ticket!\n";
+    ​
     return 0;
 }
