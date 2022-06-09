@@ -1,22 +1,29 @@
 #include <iostream>
-#include <vector>
-#include <stdexcept>      // For std::out_of_range
+#include <stdexcept>
 using namespace std;
 ​
+void divide(int x, int y){
+    if (y==0) throw "Divide by zero!";
+    cout<<(x/y)<<"\n";
+}
+​
 int main() {
-    vector<string> names = { "Ryley", "Edan", "Reagan", "Henry", "Caius", "Jane", "Guto", "Sonya", "Tyrese", "Johnny" };
-    int index;
-    string name;
-
-    cin >> index;
-
+    int userNum;
+    int divNum;
+    int result=0;
+    cin.exceptions(ios::failbit);       // Allow cin to throw exceptions
+    ​
     /* Type your code here. */
-    try{cout<<names.at(index)<<"\n";}
-    catch(exception &e){//why is pass by reference needed here?
-        cout<<"Exception! "<<e.what()<<"\n";
-        cout<<"The closest name is: ";
-        index = (index < 0) ? 0 : 9;
-        cout<<names.at(index)<<"\n";
+    try{
+        cin>>userNum>>divNum;
+        divide(userNum, divNum);
     }
+    catch(ios_base::failure &e){
+        cout<<"Input Exception: "<<e.what()<<"\n";
+    }
+    catch(...){
+        cout<<"Runtime Exception: "<<"Divide by zero!"<<"\n";
+    }
+
     return 0;
 }
