@@ -1,23 +1,29 @@
 #include <iostream>
-#include <iomanip>
 #include <stdexcept>
 using namespace std;
 ​
-/* Define your function here */
-double StepsToMiles(int steps){
-    double steps2 = steps;
-    if (steps < 0) throw runtime_error("Exception: Negative step count entered.");
-    else return steps2/2000;
+void divide(int x, int y){
+    if (y==0) throw "Divide by zero!";
+    cout<<(x/y)<<"\n";
 }
+​
 int main() {
-    int steps;
-    /* Type your code here. */
-    cin>>steps;
-    cout << fixed << setprecision(2);
-    try{cout<<StepsToMiles(steps)<<"\n";}
-    catch(runtime_error &e){
-        cout<<e.what()<<"\n";
-    }
-
-    return 0;
+   int userNum;
+   int divNum;
+   int result=0;
+   cin.exceptions(ios::failbit);       // Allow cin to throw exceptions
+​
+   /* Type your code here. */
+   try{
+      cin>>userNum>>divNum;
+      divide(userNum, divNum);
+   }
+   catch(ios_base::failure &e){
+      cout<<"Input Exception: "<<e.what()<<"\n";
+   }
+   catch(...){
+      cout<<"Runtime Exception: "<<"Divide by zero!"<<"\n";
+   }
+   
+   return 0;
 }
