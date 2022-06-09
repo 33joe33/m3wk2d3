@@ -1,29 +1,22 @@
-#include <string>
 #include <iostream>
-​
+#include <vector>
+#include <stdexcept>      // For std::out_of_range
 using namespace std;
 ​
 int main() {
-    string inputName,buff;
-    int age;
-    // Set exception mask for cin stream
-    cin.exceptions(ios::failbit);
-    ​
-    cin >> inputName;
-    while(inputName != "-1") {
-        // FIXME: The following line will throw an ios_base::failure.
-        //        Insert a try/catch statement to catch the exception.
-        //        Clear cin's failbit to put cin in a useable state.
-        try{cin >> age;}
-        catch(exception e){
-            cin.clear();
-            cin>>buff>>age;
-            age = -1;
-        }
-        cout << inputName << " " << (age + 1) << endl;
-        ​
-        cin >> inputName;
-    }
+    vector<string> names = { "Ryley", "Edan", "Reagan", "Henry", "Caius", "Jane", "Guto", "Sonya", "Tyrese", "Johnny" };
+    int index;
+    string name;
 
+    cin >> index;
+
+    /* Type your code here. */
+    try{cout<<names.at(index)<<"\n";}
+    catch(exception &e){//why is pass by reference needed here?
+        cout<<"Exception! "<<e.what()<<"\n";
+        cout<<"The closest name is: ";
+        index = (index < 0) ? 0 : 9;
+        cout<<names.at(index)<<"\n";
+    }
     return 0;
 }
