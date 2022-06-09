@@ -1,28 +1,19 @@
 #include <iostream>
-#include <functional>
 using namespace std;
 ​
-// TODO: Write recursive PrintNumPattern() function
-​
-void PrintNumPattern2(int num1, int num2, int num3){
-    if (num1 == num3) return;
-    cout<<num1<<" ";
-    if (num1 < 0) PrintNumPattern2(num1 + num2, -num2, num3);
-    else PrintNumPattern2(num1 - num2, num2, num3);
-}
-​
-void PrintNumPattern(int num1, int num2){
-    int num3 = num1 + num2;
-    PrintNumPattern2(num1, num2, num3);
+int Fibonacci(int n) {
+    /* Type your code here. */
+    if (n < 0) return -1;
+    if (n == 0) return 0;
+    if (n == 1) return 1;
+    else return Fibonacci(n-1) + Fibonacci(n-2);
 }
 ​
 int main() {
-    int num1;
-    int num2;
-    ​
-    cin >> num1;
-    cin >> num2;
-    PrintNumPattern(num1, num2);
+    int startNum;
+
+    cin >> startNum;
+    cout << "Fibonacci(" << startNum << ") is " << Fibonacci(startNum) << endl;
 
     return 0;
 }
