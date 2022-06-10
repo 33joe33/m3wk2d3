@@ -2,10 +2,14 @@
 using namespace std;
 
 int main() {
+    int x;
+    double y;
 
-    int number;
-    cin>>number;
-    cout<<2*number<<endl;
+    cin >> x;
+    double t= x;
+    y=(1.0/3.0)*t+(1.0/4.0)*t +2*t;
+
+    cout << y << endl;
 
     return 0;
 }
