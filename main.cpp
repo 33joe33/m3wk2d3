@@ -2,28 +2,17 @@
 using namespace std;
 
 int main() {
-    int passengerAge;
-    int carryOns;
-    int checkedBags;
-    int airFare;
-    int base =300;
+    string userCaption;
 
-    cin >> passengerAge;
-    cin >> carryOns;
-    cin >> checkedBags;
+    getline(cin, userCaption);
 
-    if (passengerAge >=60)
-        base =290;
-    if (passengerAge <=2)
-        base =0;
-    base+=(carryOns)*10;
-    if (checkedBags ==2)
-        base+=25;
-    if(checkedBags>2)
-        base+=(checkedBags-2)*50+25;
-
-    airFare =base;
-    cout << airFare << endl;
-
+    if (userCaption.back() != '!' and userCaption.back() != '?') {
+        if (userCaption.back() == ',' || userCaption.back()=='.') {
+            userCaption.back() = '.';
+        } else
+            userCaption.insert(userCaption.end(), '.');
+    }    if (userCaption.find("...")== -1 and userCaption.find("..")!=-1)
+        userCaption.replace(userCaption.find(".."),2,".");
+    cout<<userCaption<<endl;
     return 0;
 }
