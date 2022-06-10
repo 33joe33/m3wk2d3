@@ -2,26 +2,23 @@
 using namespace std;
 
 int main() {
-    int n;
-    int i;
-
-    cout << "Enter an integer:" << endl;
-    cin >> n;
-
-    cout << "Sequence: ";
-
-    if (n<0)
-        cout<<0<<" ";
-    if(n%2 !=0)
-        n-=1;
-    while (n>-1)
+    int number;
+    int valid=0;
+    int invalid=0;
+    double average=0;
+    do{cin>>number;
+        if(number!=0)
         {
-        cout<<n<<" ";
-
-        n-=2;
+            if (number < 2 or number > 12)
+                invalid += 1;
+            else
+                {average = average * valid + number;
+            valid += 1;
+            average = (average) / valid;}
         }
-
-
-    cout<<endl;
+    }while (number!=0);
+    cout<<"Average: "<<average<<endl;
+    cout<<"Valid: "<<valid<<endl;
+    cout<<"Invalid: "<<invalid<<endl;
     return 0;
 }
