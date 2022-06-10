@@ -1,18 +1,19 @@
 #include <iostream>
+#include <iomanip>
+
 using namespace std;
 
 int main() {
-    string userCaption;
-
-    getline(cin, userCaption);
-
-    if (userCaption.back() != '!' and userCaption.back() != '?') {
-        if (userCaption.back() == ',' || userCaption.back()=='.') {
-            userCaption.back() = '.';
-        } else
-            userCaption.insert(userCaption.end(), '.');
-    }    if (userCaption.find("...")== -1 and userCaption.find("..")!=-1)
-        userCaption.replace(userCaption.find(".."),2,".");
-    cout<<userCaption<<endl;
+int hours;
+int minutes;
+string am;
+cin>>hours;
+cin>>minutes;
+cin>>am ;
+if (hours== 12 )
+    hours -=12;
+if (am =="pm")
+    hours+=12;
+cout<<std::setw(2)<<std::setfill('0')<<hours<<":"<<std::setw(2)<<std::setfill('0')<< minutes<<endl;
     return 0;
 }
