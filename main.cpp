@@ -2,14 +2,28 @@
 using namespace std;
 
 int main() {
-    int x;
-    double y;
+    int passengerAge;
+    int carryOns;
+    int checkedBags;
+    int airFare;
+    int base =300;
 
-    cin >> x;
-    double t= x;
-    y=(1.0/3.0)*t+(1.0/4.0)*t +2*t;
+    cin >> passengerAge;
+    cin >> carryOns;
+    cin >> checkedBags;
 
-    cout << y << endl;
+    if (passengerAge >=60)
+        base =290;
+    if (passengerAge <=2)
+        base =0;
+    base+=(carryOns)*10;
+    if (checkedBags ==2)
+        base+=25;
+    if(checkedBags>2)
+        base+=(checkedBags-2)*50+25;
+
+    airFare =base;
+    cout << airFare << endl;
 
     return 0;
 }
