@@ -1,37 +1,27 @@
 #include <iostream>
 using namespace std;
-bool between(signed int start, signed int stop, int deg){
-    bool test =start<deg and stop>deg;
-
-    return (test);
-}
 
 int main() {
-int deg;
+    int n;
+    int i;
 
-string dir="some";
-cin>>deg;
+    cout << "Enter an integer:" << endl;
+    cin >> n;
 
-deg=deg*100;
-    if (between(3600-225,225,deg))
-        dir="north";
+    cout << "Sequence: ";
 
-    if (between(450-225,450+225,deg))
-        dir="northeast";
+    if (n<0)
+        cout<<0<<" ";
+    if(n%2 !=0)
+        n-=1;
+    while (n>-1)
+        {
+        cout<<n<<" ";
 
-    if (between(450+225,900+225,deg))
-        dir="east";
-    if (between(900+225,1800-225,deg))
-        dir="southeast";
-    if (between(1800-225,1800+225,deg))
-        dir="south";
+        n-=2;
+        }
 
-    if (between(1800+225,2700-225,deg))
-        dir="southwest";
-    if (between(2700-225,2700+225,deg))
-        dir="west";
-    if (between(2700+225,3600-225,deg))
-        dir="northwest";
-    cout<<deg/10<<" degrees ("<<dir<<")"<<endl;
+
+    cout<<endl;
     return 0;
 }
