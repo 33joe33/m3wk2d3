@@ -1,24 +1,18 @@
 #include <iostream>
 using namespace std;
+void recursion(int n){
 
-int main() {
-    int number;
-    int valid=0;
-    int invalid=0;
-    double average=0;
-    do{cin>>number;
-        if(number!=0)
-        {
-            if (number < 2 or number > 12)
-                invalid += 1;
-            else
-                {average = average * valid + number;
-            valid += 1;
-            average = (average) / valid;}
+        if (n<10) {
+            cout << n<<endl;
+            return;
         }
-    }while (number!=0);
-    cout<<"Average: "<<average<<endl;
-    cout<<"Valid: "<<valid<<endl;
-    cout<<"Invalid: "<<invalid<<endl;
+        cout<<n%10<<endl;
+        recursion(n/10);
+    }
+int main() {
+
+    int number;
+    cin>>number;
+    recursion(number);
     return 0;
 }
