@@ -1,29 +1,22 @@
 #include <iostream>
+#include <cmath>
 using namespace std;
-#include <algorithm>
-#include <vector>
+
 int main() {
-    string str, sub;
-    getline(cin,str);
-    bool toggle =true;
-    auto pos=str.find_first_of("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ",0);
-    int counter=0;
+    int w;
+    double h;
+    int d;
 
-    while(pos!=string::npos) {
+    cin >> d;
 
-        if (toggle)
-            {  pos =str.find_first_of("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ",pos);
-                if (pos!=string::npos)
-                    counter+=1;
-               toggle= false;
-            }
-        else
-          {
-            pos = str.find_first_of(' ',pos);
-            toggle=true;
-          }
+    for (w = 1.0; w < d; w += 1.0) {
 
+        h = sqrt( (d * d) - (w * w) );
+
+        if (w > h) {
+            cout << w << " " << h << endl;
+        }
     }
-    cout<<counter<<endl;
-return 0;
-    }
+
+    return 0;
+}
