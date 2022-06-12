@@ -1,18 +1,38 @@
 #include <iostream>
 using namespace std;
-void recursion(int n){
 
-        if (n<10) {
-            cout << n<<endl;
-            return;
-        }
-        cout<<n%10<<endl;
-        recursion(n/10);
-    }
 int main() {
+string password;
+cin>>password;
+bool let=false;
 
-    int number;
-    cin>>number;
-    recursion(number);
-    return 0;
+bool num =false;
+bool special =false;
+
+for (auto &&letter :password){
+if (isdigit(letter))
+      num =true;
+
+if (letter =='!' or letter=='#' or letter=='%')
+    special =true;
+else
+    if (!isdigit(letter))
+        let= true;
+
+}
+    if (password.length()<8)
+        cout<<"Too short"<<endl;
+    else if( num and  special and  let)
+        cout<<"OK"<<endl;
+    if (!let)
+        cout<<"Missing letter"<<endl;
+
+    if (!num)
+        cout<<"Missing number"<<endl;
+    if (!special)
+        cout<<"Missing special"<<endl;
+
+
+
+
 }
