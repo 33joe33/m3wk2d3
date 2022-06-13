@@ -1,22 +1,19 @@
 #include <iostream>
-#include <cmath>
+#include <vector>
 using namespace std;
-
 int main() {
-    int w;
-    double h;
-    int d;
 
-    cin >> d;
+    vector<int> list(12) ;
 
-    for (w = 1.0; w < d; w += 1.0) {
-
-        h = sqrt( (d * d) - (w * w) );
-
-        if (w > h) {
-            cout << w << " " << h << endl;
-        }
+    for (int i = 0; i < 12; ++i) {
+        cin>>list.at(i);
+        
     }
-
-    return 0;
+    for (int i = 0; i < 12; ++i) {
+        cout<<list.at(i);
+        if (i%4==3)
+            cout<<endl;
+        else
+            cout<<" ";
+    }
 }
